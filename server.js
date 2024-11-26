@@ -3,7 +3,8 @@ import routes from "./src/routes/postsRoutes.js";
 
 // Criação da aplicação Express
 const app = express();
-routes(app)
+app.use(express.static("uploads"));
+routes(app);
 
 // Define a porta em que o servidor irá escutar as requisições
 app.listen(3000, () => {
