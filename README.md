@@ -2,6 +2,11 @@
 
 Este projeto é um backend para uma aplicação semelhante ao Instagram, permitindo a criação, listagem e atualização de posts com imagens.  Ele utiliza o MongoDB para armazenamento de dados e a API Gemini da Google para geração de descrições de imagens.
 
+# Desenvolvimento da API
+
+Esta API RESTful foi desenvolvida usando Node.js com o framework Express.js.  Ela segue uma arquitetura de rotas e controladores, onde cada rota da API é mapeada para uma função controladora responsável pela lógica de negócio.  As funções controladoras, por sua vez, usam modelos para interagir com o banco de dados MongoDB.  O sistema de upload de imagens é gerenciado pelo middleware Multer.  Para gerar descrições de imagens, a API utiliza a API Gemini da Google.
+
+
 ## Tecnologias Utilizadas
 
 * **Node.js:** Ambiente de execução JavaScript.
@@ -10,6 +15,13 @@ Este projeto é um backend para uma aplicação semelhante ao Instagram, permiti
 * **Multer:** Middleware para upload de arquivos (imagens).
 * **@google/generative-ai:** SDK para interagir com a API Gemini da Google.
 * **cors:** Middleware para habilitar CORS (Cross-Origin Resource Sharing)
+
+# CORS (Cross-Origin Resource Sharing)
+
+CORS é um mecanismo que permite ou bloqueia requisições de um servidor web para um recurso em um domínio diferente do domínio do qual o script está sendo executado.  Em outras palavras, ele define quais domínios externos podem fazer requisições à sua API.  Sem CORS configurado, seu frontend (se rodando em um domínio ou porta diferente do backend) não conseguiria acessar sua API, resultando em erros.
+
+Neste projeto, o middleware `cors` está configurado para permitir requisições de `http://localhost:8000`.  Isso significa que somente requisições originadas desse endereço terão permissão para acessar os endpoints da API.  Para um ambiente de produção, você precisará configurar o CORS corretamente para permitir apenas as origens confiáveis.
+
 
 ## Pré-requisitos
 
@@ -62,14 +74,3 @@ Antes de executar o projeto, certifique-se de ter o Node.js e o npm (ou yarn) in
 * **POST /posts:** Cria um novo post (sem imagem).
 * **POST /upload:** Envia uma imagem para um novo post (o nome do arquivo será usado como ID). A imagem deve ser enviada com a chave `imagem` no body da requisição.
 * **PUT /upload/:id:** Atualiza um post existente com o ID fornecido.  A imagem deve existir na pasta `uploads` com o nome `id.png`. O body da requisição deve conter um campo `alt` para o atributo `alt` da imagem.
-
-
-## Considerações
-
-* O código utiliza o nome original do arquivo como ID do post.  Para produção, é recomendado implementar uma estratégia mais robusta de geração de IDs únicos.
-* A variável `corsOptions` no arquivo `server.js` define a origem permitida para requisições CORS.  Ajuste de acordo com sua necessidade.
-* Certifique-se de ter as permissões corretas para criar e escrever arquivos na pasta `uploads`.
-* Este README assume que você está familiarizado com o desenvolvimento backend em Node.js e com o uso do MongoDB e do Express.js.
-
-
-Este README fornece uma base para o seu projeto.  Sinta-se à vontade para adicionar mais seções e detalhes conforme necessário. Lembre-se de manter o README atualizado à medida que o projeto evolui.
