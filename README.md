@@ -1,4 +1,4 @@
-# InstaLike Backend
+# InstaLike
 
 Este projeto consiste no desenvolvimento de um backend para uma aplicação semelhante ao Instagram, com funcionalidades que permitem a criação, listagem e atualização de posts contendo imagens. Ele utiliza o MongoDB como banco de dados para armazenamento e integra a API Gemini, da Google, para a geração automática de descrições de imagens. O desenvolvimento foi realizado durante a **Imersão Dev de Backend**, um evento online de programação promovido pela Alura em parceria com o Google.
 
